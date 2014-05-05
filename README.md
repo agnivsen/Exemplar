@@ -24,9 +24,47 @@ The objective of this project is to implement an optimized version of 'Object Re
 
 There are still some bugs to be fixed on the slow implementation of this algorithm (which is *very* slow, at the moment). While I'm working on it, I'd appreciate your contribution in optimizing or bug-fixing this code.
 
+****
+
+##How to run the code:
+
+Download the code as a zip file or use: `git clone https://github.com/agnivsen/Exemplar.git`
+
+Run the code using XCODE 5.0.
+
+Make sure you have openCV installed and the binaries are being linked properly. If you donot have openCV installed in your mac, [check this](http://docs.opencv.org/doc/tutorials/introduction/ios_install/ios_install.html  "OpenCV's Documentation for installation with iOS").
+
+****
+
+##How to run the code from the front end (a walk through the screenshots)
+
+###1. Start the application
+
+<img src="https://github.com/agnivsen/Exemplar/blob/master/ScreenShots/SS1.png?raw=true" width="200px" height="320px" />
+
+###2. Load the image
+
+<img src="https://github.com/agnivsen/Exemplar/blob/master/ScreenShots/SS2.png?raw=true" width="200px" height="320px" />
+
+###3. Go into the Exemplar link
+
+<img src="https://github.com/agnivsen/Exemplar/blob/master/ScreenShots/SS3.png?raw=true" width="200px" height="320px" />
+
+###4. Select the exemplar tab
+
+<img src="https://github.com/agnivsen/Exemplar/blob/master/ScreenShots/SS4.jpg?raw=true" width="200px" height="320px" />
+
+###5. Drag and select the region you want to remove.
+
+<img src="https://github.com/agnivsen/Exemplar/blob/master/ScreenShots/SS5.jpg?raw=true" width="200px" height="320px" />
+
+(Do not mark the region very close to the image boundary. Boundary check not yet implemented)
+
+###5. Wait for the process to complete (which may take quite a while)
+
+<img src="https://github.com/agnivsen/Exemplar/blob/master/ScreenShots/SS6.jpg?raw=true" width="200px" height="320px" />
 
 
-
-
-
+<img src="https://github.com/agnivsen/Exemplar/blob/master/ScreenShots/SS7.JPG?raw=true" width="200px" height="320px" />
+*This image is definitely not perfect. Working on fixing the final image quality*
 
