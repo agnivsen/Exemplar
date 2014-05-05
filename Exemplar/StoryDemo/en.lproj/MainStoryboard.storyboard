@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="5">
+            <objects>
+                <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleToFill" image="Default-568h.png" id="Nvt-He-f5J">
+                                <rect key="frame" x="7" y="9" width="305" height="305"/>
+                                <color key="backgroundColor" red="0.30688055073490372" green="0.95280299245925981" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                            </imageView>
+                            <button opaque="NO" alpha="0.70000000000000007" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="49q-1s-krn">
+                                <rect key="frame" x="42" y="511" width="35" height="30"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Load">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="LoadImage:" destination="2" eventType="touchUpInside" id="5Yh-Vq-JYc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.70000000000000007" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KBD-W6-526">
+                                <rect key="frame" x="121" y="504" width="67" height="44"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="12"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Exemplar">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="O4A-IY-90m" kind="modal" identifier="FixedRadView" modalTransitionStyle="coverVertical" id="lWg-Qv-I8P"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="baghaView" destination="Nvt-He-f5J" id="Q1B-Ni-FiJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="pd8-p4-NjS">
+                    <connections>
+                        <action selector="handlePan:" destination="2" id="gJh-k5-BhW"/>
+                        <outlet property="delegate" destination="2" id="aNo-2V-5YO"/>
+                    </connections>
+                </panGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="24W-OG-TU9"/>
+                <pinchGestureRecognizer id="z5k-tc-k9W">
+                    <connections>
+                        <action selector="handlePinch:" destination="2" id="Rux-AY-NLb"/>
+                        <outlet property="delegate" destination="2" id="0Uq-5r-hv4"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <rotationGestureRecognizer id="l99-x9-I0a"/>
+            </objects>
+            <point key="canvasLocation" x="-37" y="-79"/>
+        </scene>
+        <!--Fixed Rad View Controller-->
+        <scene sceneID="aqS-l8-JMs">
+            <objects>
+                <viewController id="O4A-IY-90m" customClass="FixedRadViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="O7S-95-JaL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" alpha="0.60000000000000009" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pSw-HD-mf9">
+                                <rect key="frame" x="266" y="530" width="50" height="32"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                <color key="tintColor" red="0.44032353940000002" green="0.19361398369999999" blue="0.2911326507" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Back" backgroundImage="button.png">
+                                    <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissView:" destination="O4A-IY-90m" eventType="touchUpInside" id="lS7-dF-g0Y"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.60000000000000009" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZGd-PH-sDU">
+                                <rect key="frame" x="7" y="530" width="50" height="32"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                <color key="tintColor" red="0.44032353940000002" green="0.19361398369999999" blue="0.2911326507" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Reset" backgroundImage="button.png">
+                                    <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="2" kind="modal" identifier="dismissViewController" id="sIB-Gg-R1d"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" alpha="0.99999999999999989" contentMode="scaleToFill" id="PAK-vw-ijp">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="388"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="3JT-MM-yEa">
+                                <rect key="frame" x="18" y="451" width="284" height="29"/>
+                                <color key="minimumTrackTintColor" red="0.12886379076086951" green="0.056167687650032175" blue="0.084275139783469885" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="maximumTrackTintColor" red="0.44032353940000002" green="0.19361398369999999" blue="0.2911326507" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="thumbTintColor" red="0.53934601814516125" green="0.21459173387096775" blue="0.18734248991935484" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="slider:" destination="O4A-IY-90m" eventType="valueChanged" id="fIv-4a-m3y"/>
+                                </connections>
+                            </slider>
+                            <segmentedControl opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="97X-OU-KmI">
+                                <rect key="frame" x="69" y="528" width="182" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Navier-Stokes"/>
+                                    <segment title="Telea"/>
+                                    <segment title="Exemplar"/>
+                                </segments>
+                                <color key="tintColor" red="0.44032353940000002" green="0.19361398369999999" blue="0.2911326507" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="modeSwitch:" destination="O4A-IY-90m" eventType="valueChanged" id="C6H-Xs-2mB"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vAu-Ei-Nxh">
+                                <rect key="frame" x="139" y="431" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="Rlw-UM-vFI">
+                                <rect key="frame" x="18" y="496" width="284" height="29"/>
+                                <color key="minimumTrackTintColor" red="0.12886379079999999" green="0.056167687649999999" blue="0.084275139779999994" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="maximumTrackTintColor" red="0.44032353940000002" green="0.19361398369999999" blue="0.2911326507" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="thumbTintColor" red="0.53934601810000005" green="0.2145917339" blue="0.18734248989999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="sliderFeather:" destination="O4A-IY-90m" eventType="valueChanged" id="ndf-Q2-f6m"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Radius" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rSc-xv-ttb">
+                                <rect key="frame" x="4" y="442" width="53" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Feather" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8bA-mh-az7">
+                                <rect key="frame" x="7" y="488" width="53" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hf1-He-Nep">
+                                <rect key="frame" x="139" y="477" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="hdl-ND-p6v">
+                                <rect key="frame" x="266" y="414" width="51" height="31"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="0.39999999999999963" height="0.44999999999999962"/>
+                                <color key="onTintColor" red="0.44032353940000002" green="0.19361398369999999" blue="0.2911326507" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="dragSwitch:" destination="O4A-IY-90m" eventType="valueChanged" id="2Ph-ii-2eZ"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Continious Drag:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8ij-r4-ADx">
+                                <rect key="frame" x="221" y="400" width="110" height="21"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="10"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Marker Tagging Enabled" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hdv-5c-Ed6">
+                                <rect key="frame" x="12" y="423" width="114" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" alpha="0.99999999999999989" contentMode="scaleToFill" id="Lj3-pu-t58">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="388"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <progressView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" id="v9m-2L-Moj">
+                                <rect key="frame" x="12" y="415" width="82" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="progressTintColor" red="0.23291015625" green="0.1015182374313844" blue="0.15232002612264389" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="trackTintColor" red="0.29870074728260865" green="0.29870074728260865" blue="0.29870074728260865" alpha="1" colorSpace="calibratedRGB"/>
+                            </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="y2u-ae-TAJ">
+                                <rect key="frame" x="137" y="388" width="46" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="capture-icon.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="captureSnapshot:" destination="O4A-IY-90m" eventType="touchUpInside" id="yk2-3a-ycL"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snapshot Saved to Gallery" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YwC-lR-9Vu">
+                                <rect key="frame" x="189" y="385" width="179" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="displayImage" destination="PAK-vw-ijp" id="rrV-jg-EYV"/>
+                        <outlet property="dragState" destination="hdl-ND-p6v" id="VQ6-Wd-dr8"/>
+                        <outlet property="featherTextVal" destination="Hf1-He-Nep" id="h2R-an-kzg"/>
+                        <outlet property="markerNotice" destination="Hdv-5c-Ed6" id="VYt-RP-vzw"/>
+                        <outlet property="modeVal" destination="97X-OU-KmI" id="R0c-5F-1e9"/>
+                        <outlet property="overlayView" destination="Lj3-pu-t58" id="Qem-58-TCb"/>
+                        <outlet property="progressBarExemplar" destination="v9m-2L-Moj" id="UIn-UW-b8M"/>
+                        <outlet property="progressExemplar" destination="rSc-xv-ttb" id="Qd8-bY-1iA"/>
+                        <outlet property="savedImageLabel" destination="YwC-lR-9Vu" id="0JX-E9-DtC"/>
+                        <outlet property="sliderFeatherVal" destination="Rlw-UM-vFI" id="Aix-e3-Its"/>
+                        <outlet property="sliderVal" destination="3JT-MM-yEa" id="hP8-2Q-cQN"/>
+                        <outlet property="textVal" destination="vAu-Ei-Nxh" id="JO5-Fr-1tv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Lv-dd-zfE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-37" y="-826"/>
+        </scene>
+        <!--View-->
+        <scene sceneID="J8H-86-PaA">
+            <objects>
+                <viewController storyboardIdentifier="showTargetImage" id="O6J-aB-5Ef" customClass="ORView" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gde-M8-0au" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-37" y="707"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Default-568h.png" width="640" height="1136"/>
+        <image name="button.png" width="600" height="435"/>
+        <image name="capture-icon.png" width="256" height="256"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

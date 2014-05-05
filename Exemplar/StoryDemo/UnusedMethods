@@ -1,0 +1,220 @@
+
+/*This radial sweep method was used to determine the RoI fill front initially. It was later discarded in favor of 'findContour' function of openCV.*/
+
+-(struct fillFront *) radialSweep : (unsigned char *) mask :  (int) height : (int) width : (size_t) bytesPerRow : (int) texel
+{
+    int currX, currY, nextX = -1, nextY = -1;
+    bool foundFirst = FALSE, notSecond = TRUE;
+    
+    for(int i=0;i<height;i++)
+    {
+        for(int j=0;j<bytesPerRow;j+=4)
+        {
+            if(mask[i*bytesPerRow + j + 0]>200)
+            {
+                nextX = i;
+                nextY = j;
+                foundFirst = TRUE;
+            }
+            else
+            {   //drawing mask area close to the boundary can cause trouble at this step
+                currX = i;
+                currY = j;
+            }
+            if (foundFirst)
+            {
+                break;
+            };
+        }
+        if (foundFirst)
+        {
+            break;
+        };
+    }
+    
+    struct fillFront *fill = malloc(sizeof(fill));
+    
+    if((nextX>0)&&(nextY>0))
+    {
+        struct fillFront *temp = malloc(sizeof(temp));
+        fill->x = nextX;
+        fill->y = nextY;
+        fill->texelSize = texel;
+        fill->next = NULL;
+        temp = fill;
+        
+        int firstX = nextX, firstY = nextY;
+        int secondX = -(texel+1), secondY = -(texel+1);
+        int x = currX, y = currY;
+        
+        do
+        {
+            struct pixel *pix = [self getMooreNeighbor :x :y :nextX :nextY];
+            //NSLog(@"initial %d, %d",x,y);
+            
+            if(mask[(x = pix->x)*bytesPerRow + (y = pix->y) + 0]>200)
+            {
+                //NSLog(@"interim %d, %d",x,y);
+                currX = nextX, currY = nextY;
+                nextX = x, nextY = y;
+                x = currX, y = currY;
+                
+                if(EUCLEDIAN_DISTANCE(temp->x, temp->y/4, nextX, nextY/4)>=texel)
+                {
+                    if(notSecond)
+                    {
+                        secondX = firstX, secondY = firstY;
+                        firstX = x, firstY = y;
+                        notSecond = FALSE;
+                    }
+                    struct fillFront *element = malloc(sizeof(element));
+                    element->x = nextX;
+                    element->y = nextY;
+                    element->texelSize = texel;
+                    element->next = NULL;
+                    temp->next = element;
+                    temp = element;
+                    //NSLog(@"found valid pixel at %d, %d",nextX,nextY);
+                }
+                //NSLog(@"found blocked pixel");
+            }
+            //NSLog(@"final %d, %d",x,y);
+            
+            free(pix);
+        }
+        while ([self checkClosure:firstX :firstY :secondX :secondY :nextX :nextY :currX :currY :texel]);
+    }
+    else
+    {
+        /*Error condition indicating that the mask area starts from the (0,0) coordinate of the image.
+        Not suitable for initiating a radial sweep... prevent this error from coming up in the first place.
+        User should not be allowed to draw/nudge the selection area to the margin of the image.
+        If in this block, there is also a possibility of some mathematical error which resulted in negative values of 
+         'currX' or 'currY'.*/
+    }
+
+    return fill;
+}
+
+
+/**************************************************************************************************/
+
+#define EUCLEDIAN_DISTANCE(x,y,x1,y1) sqrt(pow((x1-x), 2) + pow((y1-y), 2))
+
+/*This method needs to be associated with radial sweep*/
+
+-(BOOL)checkClosure : (int) _1x : (int)  _1y : (int) _2x : (int) _2y : (int) nextX  : (int) nextY : (int) currX  : (int) currY : (int) texel
+{
+    /*Helper function to radial sweep*/
+    
+    double _1dist = EUCLEDIAN_DISTANCE(_2x ,_2y/4 ,nextX ,nextY/4);
+    double _2dist = EUCLEDIAN_DISTANCE( _1x ,_1y/4 ,currX ,currY/4);
+    
+    if((_1dist<=texel)&&(_2dist<=texel))
+    {
+        return FALSE;
+    }
+    else
+    {
+        return TRUE;
+    }
+}
+
+/**************************************************************************************************/
+
+/*Neighborhood finding algorithm for radial sweep*/
+
+-(struct pixel *)getMooreNeighbor : (int) currX : (int) currY : (int) nextX : (int) nextY
+{
+    int y = nextY - currY;
+    int x = nextX - currX;
+    //NSLog(@"incoming %d, %d ----> next: %d, %d",currX,currY,nextX,nextY);
+    switch (y)
+    {
+        case -4:
+            {
+                switch (x)
+                {
+                    case -1:
+                        {
+                            currX--;
+                        }
+                        break;
+                    case 0:
+                        {
+                            currX--;
+                        }
+                        break;
+                    case 1:
+                        {
+                            currY-=4;
+                        }
+                        break;
+                        
+                    default:
+                        break;
+                }
+            }
+            break;
+        case 0:
+            {
+                switch (x)
+                {
+                    case -1:
+                    {
+                        currY+=4;
+                    }
+                        break;
+                    case 0:
+                    {
+                    }
+                        break;
+                    case 1:
+                    {
+                        currY-=4;
+                    }
+                        break;
+                        
+                    default:
+                        break;
+                }
+            }
+            break;
+        case 4:
+            {
+                switch (x)
+                {
+                    case -1:
+                    {
+                        currY+=4;
+                    }
+                        break;
+                    case 0:
+                    {
+                        currX++;
+                    }
+                        break;
+                    case 1:
+                    {
+                        currX++;
+                    }
+                        break;
+                        
+                    default:
+                        break;
+                }
+            }
+            break;
+            
+        default:
+            break;
+    }
+    
+    struct pixel *pix = malloc(sizeof(pix));
+    pix->x = currX;
+    pix->y = currY;
+    
+    //NSLog(@"outgoing %d, %d",currX,currY);
+    
+    return pix;
+}
